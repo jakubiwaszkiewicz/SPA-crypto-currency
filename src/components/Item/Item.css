@@ -1,0 +1,17 @@
+.Item {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin:0.5rem;
+    padding:0.5rem;
+    gap: 0.5rem;
+}
+.Item img {
+    max-width: 128px;
+}
+.Item .btn {
+    min-width: 171px;
+}
+.Item.active {
+    background-color: #23272a;
+}

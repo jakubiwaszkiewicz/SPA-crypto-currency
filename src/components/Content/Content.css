@@ -1,0 +1,44 @@
+main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+.counter {
+    position: absolute;
+    z-index: 100;
+    top: calc(5rem + 5px);
+    left: 5px;
+}
+.content-selected {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.content-selected.active {
+    display: flex;
+}
+.selected-tab {
+    height: 3rem;
+    background: #99aab5;
+    display: flex;
+}
+.selected-currencies {
+    display: none;
+    flex-flow: row nowrap;
+}
+.selected-currencies.active {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.developing-btn {
+    /*position: absolute;
+    right: 1rem;*/
+    margin: auto 0;
+}

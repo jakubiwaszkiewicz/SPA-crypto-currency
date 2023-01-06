@@ -1,0 +1,8 @@
+.selected {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin:0.5rem;
+    padding:0.5rem;
+    gap: 0.5rem;
+}
