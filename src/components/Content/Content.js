@@ -3,6 +3,7 @@ import data from "../data"
 import Item from "../Item/Item"
 import Selected from "../Selected/Selected"
 import React, { useState, useEffect, useRef } from 'react'
+import axios from 'axios';
 const Content = () => {
 
     const [newData, setNewData] = useState( JSON.parse(localStorage.getItem("newData")) || [])
@@ -10,6 +11,19 @@ const Content = () => {
     const [selected, setSelected] = useState(JSON.parse(localStorage.getItem("selected")) || 0)
     const [clicked, setClicked] = useState(JSON.parse(localStorage.getItem("clicked")) || [])
     const [tab, setTab] = useState(JSON.parse(localStorage.getItem("tab")) || false)
+    const [dataAPI, setDataAPI] = useState(null)
+
+    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=10&page=1&sparkline=false\n"
+
+    useEffect(() => {
+        axios.get(url).then((response) => {
+            setDataAPI(response.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    },[])
+
+    console.log(dataAPI)
 
     const changeCount = (prevCount) => {
         setCount(prevCount)
