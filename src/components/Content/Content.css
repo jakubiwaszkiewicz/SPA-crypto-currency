@@ -26,19 +26,48 @@ main {
 }
 .selected-tab {
     height: 3rem;
-    background: #99aab5;
+    /*background: var(--background2);*/
+    background: rgb(44,47,51);
+    background: linear-gradient(180deg, rgba(44,47,51,1) 0%, rgba(35,39,42,1) 71%, rgba(35,39,42,1) 100%);
     display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 .selected-currencies {
     display: none;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
 }
 .selected-currencies.active {
     display: flex;
-    flex-flow: row nowrap;
 }
-.developing-btn {
-    /*position: absolute;
-    right: 1rem;*/
-    margin: auto 0;
+.dev-btn {
+    position: absolute;
+    z-index: 100;
+    top: calc(5rem + 20px);
+    right: 20px;
+    height: 30px;
+    cursor: pointer;
+    width: 30px;
+}
+
+.dev-btn .btn-bars {
+    border: 1px solid white;
+    width: 20px;
+    transition: transform 0.5s;
+}
+
+.dev-btn .btn-bar1 {
+    transform: translateY(2px) translateX(6.5px) rotate(45deg);
+}
+
+.dev-btn .btn-bar2 {
+    transform: translateX(-6.5px) rotate(-45deg);
+}
+
+.dev-btn.active .btn-bar1 {
+    transform: translateY(2px) translateX(6.5px) rotate(-45deg);
+}
+.dev-btn.active .btn-bar2 {
+    transform: translateX(-6.5px) rotate(45deg);
 }

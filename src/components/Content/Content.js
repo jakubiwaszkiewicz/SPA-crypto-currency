@@ -115,12 +115,21 @@ const Content = () => {
 
     return (
         <main>
-            <p className="counter">{count}/5</p>
-            <div className={count ? "content-selected.active" : "content-selected" }>
-                <div className={tab ? "selected-currencies.active" : "selected-currencies"}>{selected}</div>
-                <div className="selected-tab"><span>Selected Currencies</span><div className="developing-btn" onClick={clickTab}>button</div></div>
-            </div>
 
+            <div className={count ? "content-selected active" : "content-selected" }>
+                <div className={tab ? "selected-currencies active" : "selected-currencies"}>{selected}</div>
+                <div className="selected-tab">
+                    <p className="counter"></p>
+                    <h5>Selected Currencies {count}/5</h5>
+                    <div className={tab ? "dev-btn active" : "dev-btn"} onClick={clickTab}>
+                        <div className="btn-bars btn-bar1">
+                        </div>
+                        <div className="btn-bars btn-bar2">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <div className="content">
                 {content}
             </div>
