@@ -13,12 +13,7 @@ const Content = () => {
     const [clicked, setClicked] = useState(JSON.parse(localStorage.getItem("clicked")) || [])
     const [tab, setTab] = useState(JSON.parse(localStorage.getItem("tab")) || false)
     const [dataAPI, setDataAPI] = useState([])
-
-    useEffect(() => {
-        fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=20&page=1&sparkline=false")
-            .then((response) => response.json())
-            .then((json) => setDataAPI(json));
-    },[])
+    const [chartDisplay, setChartDisplay] = useState(false)
 
     const changeCount = (prevCount) => {
         setCount(prevCount)
@@ -26,6 +21,16 @@ const Content = () => {
     const changeClicked = (prevClicked) => {
         setClicked(prevClicked)
     }
+
+    const changeChartDisplay = (prevChartDisplay) => {
+        setChartDisplay(prevChartDisplay)
+    }
+
+    useEffect(() => {
+        fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=20&page=1&sparkline=false")
+            .then((response) => response.json())
+            .then((json) => setDataAPI(json));
+    },[])
 
     useEffect(() => {
         localStorage.setItem("count",JSON.stringify(count))
@@ -64,6 +69,7 @@ const Content = () => {
                         <Selected
                             key={item.id}
                             item={item}
+                            isChartVisible = {changeChartDisplay}
                         />
                     )
                 }))
@@ -102,6 +108,10 @@ const Content = () => {
     useEffect ( () => {
         localStorage.setItem("tab",JSON.stringify(tab))}
         ,[tab])
+
+    useEffect(() => {
+
+    }, [chartDisplay])
 
     return (
         <main>

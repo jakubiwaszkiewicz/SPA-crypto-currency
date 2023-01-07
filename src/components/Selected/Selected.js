@@ -5,7 +5,7 @@ import axios from 'axios';
 const Selected = (props) => {
 
     const [dataAPIChart, setDataAPIChart] = useState([])
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(true)
 
     const url = `https://api.coingecko.com/api/v3/coins/${props.id}/market_chart?vs_currency=pln&days=1`
 

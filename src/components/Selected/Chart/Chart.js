@@ -6,23 +6,19 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 const Chart = (props) => {
     const data = props.data
     let dataChart = []
-        if (typeof(data) !== 'undefined') {
+    if (typeof(data) !== 'undefined') {
         for (let i = 0; i < data.length; i++) {
             let date = new Date(data[i][0]);
             let hour = date.getHours()
             let day = date.getDate()
             const price = data[i][1].toFixed(2)
-
-            /*let date = new Date(timestamp * 1000);*/
-
             const initialObject = {
                 time: hour,
                 price: `${price}`,
             }
             dataChart.push(initialObject)
-
         }
-        }
+    }
 
     return (
         <div className={props.visible ? "chart active" : "chart"}>
