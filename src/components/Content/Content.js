@@ -15,7 +15,7 @@ const Content = () => {
     const [dataAPI, setDataAPI] = useState([])
 
     useEffect(() => {
-        fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=100&page=1&sparkline=false")
+        fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=20&page=1&sparkline=false")
             .then((response) => response.json())
             .then((json) => setDataAPI(json));
     },[])
@@ -29,7 +29,7 @@ const Content = () => {
 
     useEffect(() => {
         localStorage.setItem("count",JSON.stringify(count))
-        },[count])
+    },[count])
 
     useEffect(() => {
         function arrayComparison () {
@@ -39,7 +39,6 @@ const Content = () => {
                     arr.push(dataAPI[i])
                 }}
             setNewData(arr)
-            console.log(newData)
         }
             arrayComparison()
         },[clicked])
@@ -54,10 +53,10 @@ const Content = () => {
         }
     }, [clicked])
 
-    const didMount = useRef(false)
-    const didMount2 = useRef(false)
+    const didMountnewData = useRef(false)
+    const didMountnewData2 = useRef(false)
     useEffect(() => {
-        if (didMount.current && didMount2.current) {
+        if (didMountnewData.current && didMountnewData2.current) {
             localStorage.setItem("newData", JSON.stringify(newData))
             setSelected(
                 newData.map((item) => {
@@ -69,10 +68,10 @@ const Content = () => {
                     )
                 }))
 
-        } else if (didMount.current) {
-            didMount2.current = true
+        } else if (didMountnewData.current) {
+            didMountnewData2.current = true
         } else {
-            didMount.current = true
+            didMountnewData.current = true
         }
     },[newData])
 

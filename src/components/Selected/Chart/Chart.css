@@ -1,0 +1,6 @@
+.chart{
+    display: block;
+}
+.chart.active{
+    display: none;
+}
