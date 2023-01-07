@@ -1,9 +1,10 @@
 import "./Content.css"
+/*
 import data from "../data"
+*/
 import Item from "../Item/Item"
 import Selected from "../Selected/Selected"
 import React, { useState, useEffect, useRef } from 'react'
-import axios from 'axios';
 const Content = () => {
 
     const [newData, setNewData] = useState( JSON.parse(localStorage.getItem("newData")) || [])
@@ -11,19 +12,13 @@ const Content = () => {
     const [selected, setSelected] = useState(JSON.parse(localStorage.getItem("selected")) || 0)
     const [clicked, setClicked] = useState(JSON.parse(localStorage.getItem("clicked")) || [])
     const [tab, setTab] = useState(JSON.parse(localStorage.getItem("tab")) || false)
-    const [dataAPI, setDataAPI] = useState(null)
-
-    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=10&page=1&sparkline=false\n"
+    const [dataAPI, setDataAPI] = useState([])
 
     useEffect(() => {
-        axios.get(url).then((response) => {
-            setDataAPI(response.data)
-        }).catch((error) => {
-            console.log(error)
-        })
+        fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=100&page=1&sparkline=false")
+            .then((response) => response.json())
+            .then((json) => setDataAPI(json));
     },[])
-
-    console.log(dataAPI)
 
     const changeCount = (prevCount) => {
         setCount(prevCount)
@@ -34,21 +29,17 @@ const Content = () => {
 
     useEffect(() => {
         localStorage.setItem("count",JSON.stringify(count))
-        if (count === 0) {
-
-        }
-
         },[count])
 
     useEffect(() => {
         function arrayComparison () {
             let arr = []
-            for (let i = 0; i< data.length; i++) {
-                if (clicked.includes(data[i].id)) {
-                    arr.push(data[i])
+            for (let i = 0; i< dataAPI.length; i++) {
+                if (clicked.includes(dataAPI[i].id)) {
+                    arr.push(dataAPI[i])
                 }}
             setNewData(arr)
-            console.log("clicked, po sprawdzeniu i stworzeniu tablicy arr:", clicked)
+            console.log(newData)
         }
             arrayComparison()
         },[clicked])
@@ -56,12 +47,10 @@ const Content = () => {
     const didMountClicked = useRef(false)
     useEffect(() => {
         if (didMountClicked.current){
-            console.log("clicked, zapisywanie:", clicked)
             localStorage.setItem("clicked", JSON.stringify(clicked))
         }
         else {
             didMountClicked.current = true
-            console.log("clicked, zapisywanie - pierwszy render:", clicked)
         }
     }, [clicked])
 
@@ -70,7 +59,6 @@ const Content = () => {
     useEffect(() => {
         if (didMount.current && didMount2.current) {
             localStorage.setItem("newData", JSON.stringify(newData))
-            console.log(newData)
             setSelected(
                 newData.map((item) => {
                     return (
@@ -90,34 +78,23 @@ const Content = () => {
 
     useEffect( () => {
         setSelected(
-            newData.map((item) => {
+            newData.map((dataAPI) => {
                 return (
                     <Selected
-                        key={item.id}
-                        item={item}
+                        key = {dataAPI.id}
+                        id = {dataAPI.id}
+                        name = {dataAPI.name}
+                        image = {dataAPI.image}
+                        symbol = {dataAPI.symbol}
+                        currentPrice = {dataAPI.current_price}
                     />
                 )
             }))
-    },[])
+    },[newData])
 
     useEffect(() => {
         localStorage.setItem("count",JSON.stringify(count))
     },[count])
-
-    const content = data.map((item) => {
-            return (
-                <Item
-                    key = {item.id}
-                    id = {item.id}
-                    count = {count}
-                    changeCount = {changeCount}
-                    clicked = {clicked}
-                    changeClicked = {changeClicked}
-                    item = {item}
-                />
-            )
-        }
-    )
 
     function clickTab () {
         setTab(!tab)
@@ -145,7 +122,21 @@ const Content = () => {
 
             </div>
             <div className="content">
-                {content}
+                {dataAPI.map((dataAPI) => (
+                    <Item
+                        key = {dataAPI.id}
+                        id = {dataAPI.id}
+                        name = {dataAPI.name}
+                        image = {dataAPI.image}
+                        symbol = {dataAPI.symbol}
+                        currentPrice = {dataAPI.current_price}
+                        count = {count}
+                        changeCount = {changeCount}
+                        clicked = {clicked}
+                        changeClicked = {changeClicked}
+                        item = {dataAPI}
+                    />
+                ))}
             </div>
         </main>
     );

@@ -59,8 +59,9 @@ const Item = (props) => {
 
     return (
         <div id={`item-parent${id}`} className={click ? "Item active" : "Item"}>
-            <p>{props.item.name} ({props.item.abbreviation})</p>
-            <img src={props.item.img} alt={props.item.name} />
+            <p>{props.name} ({props.symbol})</p>
+            <p>{props.currentPrice} zł</p>
+            <img src={props.image} alt={props.name} />
             <div className="btn" onClick={handleClick}>Select Currency</div>
         </div>
     );

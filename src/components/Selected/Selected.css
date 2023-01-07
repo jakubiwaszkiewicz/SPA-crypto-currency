@@ -7,3 +7,7 @@
     gap: 0.5rem;
     max-width: 171px;
 }
+.selected img {
+    display: block;
+    max-width: 155px;
+}
