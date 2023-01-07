@@ -17,7 +17,7 @@ const Chart = (props) => {
 
             const initialObject = {
                 time: hour,
-                price: price,
+                price: `${price}`,
             }
             dataChart.push(initialObject)
 
@@ -26,6 +26,7 @@ const Chart = (props) => {
 
     return (
         <div className={props.visible ? "chart active" : "chart"}>
+            <h5>{props.name} 24h price [PLN]</h5>
             <LineChart
                 width={1200}
                 height={500}
@@ -38,24 +39,24 @@ const Chart = (props) => {
                 }}
             >
                 {/*<CartesianGrid strokeDasharray="3 3" />*/}
-                <XAxis
+                {/*<XAxis
                     dataKey="time"
                     domain={["dataMIN", "dataMAX"]}
                     name="Last 24h"
                     type='category'
-                />
+                />*/}
                 <YAxis
                     dataKey="price"
                     domain={["dataMIN", "dataMAX"]}
                     tickCount = "10"
                     name="Price [PLN]"
                 />
-                <Tooltip />
+                {/*<Tooltip />*/}
                 <Legend />
                 <Line
                     type="monotone"
                     dataKey="price"
-                    stroke="#8884d8"
+                    stroke="#7289da"
                     dot={false}
                 />
             </LineChart>

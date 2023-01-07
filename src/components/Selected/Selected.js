@@ -19,10 +19,6 @@ const Selected = (props) => {
             .then((json) => setDataAPIChart(json));
     },[])
 
-    useEffect(() => {
-
-    },[visible])
-
     return (
         <section className="selected">
             <p>{props.name} ({props.symbol})</p>
@@ -31,6 +27,7 @@ const Selected = (props) => {
             <Chart
                 visible = {visible}
                 data = {dataAPIChart.prices}
+                name = {props.name}
             />
         </section>
     )
