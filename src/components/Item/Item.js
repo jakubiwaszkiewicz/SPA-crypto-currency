@@ -27,10 +27,10 @@ const Item = ({id, selected, changeSelected, currentPrice, name, symbol, image})
     }, [])
 
     return (
-        <div id={`item-parent${id}`} className={click ? "Item active" : "Item"}>
-            <p>{props.name} ({props.symbol})</p>
-            <p>{props.currentPrice} zł</p>
-            <img src={props.image} alt={props.name} />
+        <div id={`item-parent${id}`} className={selected.includes(id) ? "Item active" : "Item"}>
+            <p>{name} ({symbol})</p>
+            <p>{currentPrice} zł</p>
+            <img src={image} alt={name} />
             <div className="btn" onClick={handleClick}>Select Currency</div>
         </div>
     );

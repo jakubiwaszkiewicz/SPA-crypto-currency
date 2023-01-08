@@ -1,24 +1,39 @@
 import "./Chart.css"
 import React, { useState, useEffect, PureComponent } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import { format } from "date-fns";
 
 const Chart = ({visible, data, name}) => {
     const dataChart = []
     if (typeof(data) !== 'undefined') {
         for (let i = 0; i < data.length; i++) {
-            let date = new Date(data[i][0]);
-            let hour = date.getHours()
-            let day = date.getDate()
+            const date = new Date(data[i][0]);
+            const hour = date.getHours()
+            const day = date.getDate()
             const price = data[i][1].toFixed(2)
             const initialObject = {
-                time: hour,
-                price: `${price}`,
+                date: date.getTime(),
+                price: price,
             }
 
             dataChart.push(initialObject)
         }
     }
+
+    const dateFormatter = (date) => {
+        return format(new Date(date), "k:mm d-MM");
+    };
+
+    const customizedAxisTick = ({ x, y, stroke, payload }) => {
+            return (
+                <g transform={`translate(${x},${y})`}>
+                    <text x={0} y={0} dy={16} textAnchor="end" fill="#666" transform="rotate(-35)">
+                        {dateFormatter(payload.value)}
+                    </text>
+                </g>
+            );
+        }
+
 
     return (
         <div className={visible ? "chart active" : "chart"}>

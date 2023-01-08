@@ -1,10 +1,7 @@
-import "./Content.css"
-/*
-import data from "../data"
-*/
-import Item from "../Item/Item"
-import Selected from "../Selected/Selected"
-import React, { useState, useEffect, useRef } from 'react'
+import "./Content.css";
+import Item from "../Item/Item";
+import Selected from "../Selected/Selected";
+import React, { useState, useEffect, useRef } from 'react';
 const Content = () => {
 
     const [selected, setSelected] = useState(JSON.parse(localStorage.getItem("selected")) || []);
@@ -14,7 +11,7 @@ const Content = () => {
     useEffect(() => {
         fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=20&page=1&sparkline=false")
             .then((response) => response.json())
-            .then((json) => setDataAPI(json));
+            .then((json) => setData(json));
     },[])
 
 
@@ -54,8 +51,8 @@ const Content = () => {
                     )})}</div>
                 <div className="selected-tab">
                     <p className="counter"></p>
-                    <h5>Selected Currencies {count}/5</h5>
-                    <div className={tab ? "dev-btn active" : "dev-btn"} onClick={clickTab}>
+                    <h5>Selected Currencies {selected.length}/5</h5>
+                    <div className={tab ? "dev-btn active" : "dev-btn"} onClick={() => setTab(prevState => !prevState)}>
                         <div className="btn-bars btn-bar1">
                         </div>
                         <div className="btn-bars btn-bar2">
@@ -64,7 +61,7 @@ const Content = () => {
                 </div>
             </div>
             <div className="content">
-                {dataAPI.map((dataAPI) => (
+                {data.map((dataAPI) => (
                     <Item
                         key = {dataAPI.id}
                         id = {dataAPI.id}
