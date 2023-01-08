@@ -11,7 +11,7 @@ const NavBar = () => {
         <nav>
             <div className="navbar-container">
                 <h1>jakub<span className="blue">iwaszkiewicz</span></h1>
-                <ul className={clicked ? "nav-menu active" : "nav-menu"}>
+                {/*<ul className={clicked ? "nav-menu active" : "nav-menu"}>
                     <li>
                         <a href="/">Home</a>
                     </li>
@@ -19,7 +19,7 @@ const NavBar = () => {
                 <div className="hamburger" onClick={handleClick}>
                     {clicked ? <FaTimes size={20} style={{color:'#99aab5'}}/> : <FaBars size={20} style={{color:'#99aab5'}}/>}
                 </div>
-
+*/}
             </div>
         </nav>
     );

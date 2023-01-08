@@ -1,7 +1,7 @@
 
 import "./Item.css"
 import React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 const Item = ({id, selected, changeSelected, currentPrice, name, symbol, image}) => {
 
     const handleClick = () => {

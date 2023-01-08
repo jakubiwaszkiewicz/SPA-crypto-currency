@@ -37,6 +37,7 @@ main {
 .selected-currencies {
     display: none;
     flex-flow: row wrap;
+    justify-content: center;
 }
 .selected-currencies.active {
     display: flex;
