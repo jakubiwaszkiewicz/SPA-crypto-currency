@@ -1,13 +1,13 @@
 import "./Selected.css"
-import React, { useState, useEffect, PureComponent } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Chart from './Chart/Chart'
-import axios from 'axios';
-const Selected = (props) => {
+
+const Selected = ({id, name, image, symbol, currentPrice, selected, changeSelected}) => {
 
     const [dataAPIChart, setDataAPIChart] = useState([])
     const [visible, setVisible] = useState(true)
 
-    const url = `https://api.coingecko.com/api/v3/coins/${props.id}/market_chart?vs_currency=pln&days=1`
+    const url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=pln&days=1`
 
     function clickHandler () {
         setVisible(!visible)
@@ -21,13 +21,14 @@ const Selected = (props) => {
 
     return (
         <section className="selected">
-            <p>{props.name} ({props.symbol})</p>
-            <img src={props.image} alt={`${props.image} (${props.symbol})`}/>
+            <p>{name} ({symbol})</p>
+            <p>{currentPrice}</p>
+            <img src={image} alt={`${image} (${symbol})`}/>
             <div className="btn" onClick={clickHandler}>Check Chart</div>
             <Chart
                 visible = {visible}
                 data = {dataAPIChart.prices}
-                name = {props.name}
+                name = {name}
             />
         </section>
     )

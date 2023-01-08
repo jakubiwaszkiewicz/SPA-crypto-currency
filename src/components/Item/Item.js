@@ -2,56 +2,25 @@
 import "./Item.css"
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
-const Item = (props) => {
-
-    const id = props.id
-
-    const [click, setClick] = useState(() => {
-        const saved = localStorage.getItem(`isClicked${id}`)
-        const initialValue = JSON.parse(saved)
-        return initialValue || false
-    })
+const Item = ({id, selected, changeSelected, currentPrice, name, symbol, image}) => {
 
     const handleClick = () => {
-        if (props.count <= 4) {
-            setClick(!click)
-        } else {
-            if (click) {
-                setClick(!click)
-            } else {
-                console.log("nie możesz zaznaczyć więcej itemów")
-            }
+        if (selected.includes(id)) {
+            changeSelected(prevState => {
+                const idToRemove = prevState.indexOf(id);
+                prevState.splice(idToRemove, 1)
+                return [...prevState];
+            })
         }
+        else {
+        if (selected.length <= 4) {
+           changeSelected(prevState => [...prevState, id])
+        }}
     }
 
-    const didMount = useRef(false)
-
-    useEffect(() => { // do zmieniania count i zapisywania ich w storage'u
-        if (didMount.current) {
-            if (click) {
-                props.changeCount(props.count+1)
-                props.changeClicked(
-                    [
-                        ...props.clicked,
-                        id
-                    ]
-                )
-            } else {
-                props.changeCount(props.count-1)
-                props.changeClicked(
-                    props.clicked.filter(
-                        x => x !== id
-                    )
-                )
-            }
-            localStorage.setItem(`isClicked${id}`,JSON.stringify(click))
-        } else didMount.current = true
-    },[click])
-
-    useEffect(() => { // do rerenderingu strony, aby otrzymać pokolorowane selected itemy
+    useEffect(() => {
         const item = document.getElementById(`item-parent${id}`)
-        const saved = localStorage.getItem(`isClicked${id}`)
-        const initialValue = JSON.parse(saved)
+        const initialValue = JSON.parse(localStorage.getItem(`isClicked${id}`))
         if (initialValue) {
             item.classList.add("active")
         }

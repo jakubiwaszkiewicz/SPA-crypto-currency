@@ -1,7 +1,6 @@
-import './App.css';
 import NavBar from './components/NavBar/NavBar'
 import Content from './components/Content/Content'
-export default function App () {
+const App = () => {
   return (
     <div className="App">
       <NavBar/>
@@ -9,3 +8,4 @@ export default function App () {
     </div>
   );
 }
+export default App
