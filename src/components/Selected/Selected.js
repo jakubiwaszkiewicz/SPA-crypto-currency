@@ -5,14 +5,14 @@ import Chart from './Chart/Chart';
  *
  * @component
  * This component is used to show a currency card and a button that can be interacted with to display a market chart.
- * It also gathers important data necessary for creating the chart..
+ * It also gathers important data necessary for creating the chart.
  * @param {string} id- ID of the currency.
  * @param {array} selected- State, storing a selected items.
- * @param {string} currentPrice- Display a value of the currency
- * @param {string} name- Display a name of the currency
+ * @param {string} currentPrice- Display a value of the currency.
+ * @param {string} name- Display a name of the currency.
  * @param {string} symbol- Display a symbol of the currency.
  * @param {string} image- Display an image of the currency.
- * @return {object} Display a card of the cryptocurrency
+ * @return {object} Display a card of the cryptocurrency.
  */
 const Selected = ({ id, name, image, symbol, currentPrice }) => {
     const [dataChart, setDataChart] = useState([]);

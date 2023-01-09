@@ -3,16 +3,15 @@ import React from 'react';
 /**
  *
  * @component
- * The component is for display a cord of the cryptocurrency with interactive button for selecting currencies and some
- * essential information about it.
- * @param {string} id- ID of the currency.
- * @param {array} selected- Storing a selected items.
- * @param {function} changeSelected- Changing value of the `selected`
- * @param {string} currentPrice- Display a value of the currency
- * @param {string} name- Display a name of the currency
- * @param {string} symbol- Display a symbol of the currency.
- * @param {string} image- Display an image of the currency.
- * @return {object} Display a card of the cryptocurrency
+ * This component displays a card with information about a cryptocurrency and includes an interactive button for
+ * selecting currencies. It also shows some essential details about the cryptocurrency and finally display a card of the cryptocurrency.
+ * @param {string} id- ID of the currency
+ * @param {array} selected- storing a selected items
+ * @param {function} changeSelected- changing value of the `selected`
+ * @param {string} currentPrice- display a value of the currency
+ * @param {string} name- display a name of the currency
+ * @param {string} symbol- display a symbol of the currency
+ * @param {string} image- display an image of the currency
  */
 const CryptoCurrency = ({
     id,

@@ -14,9 +14,9 @@ import { format } from 'date-fns';
 /**
  * Component which render a chart after clicking the "Check Chart" button.
  * @component
- * @param {boolean} visible - making chart visible on click.
- * @param {object} data- essential data to make a market chart.
- * @param {string} name- Display a name of the currency
+ * @param {boolean} visible - making chart visible on click
+ * @param {object} data- essential data to make a market chart
+ * @param {string} name- display a name of the currency
  */
 const Chart = ({ visible, data, name }) => {
     const dataChart = [];
