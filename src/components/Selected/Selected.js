@@ -1,7 +1,17 @@
 import './Selected.css';
 import React, { useState, useEffect } from 'react';
 import Chart from './Chart/Chart';
-
+/**
+ *
+ * @component
+ * @param {string} id- ID of the currency.
+ * @param {array} selected- State, storing a selected items.
+ * @param {string} currentPrice- Display a value of the currency
+ * @param {string} name- Display a name of the currency
+ * @param {string} symbol- Display a symbol of the currency.
+ * @param {string} image- Display an image of the currency.
+ * @return {object} Display a card of the cryptocurrency
+ */
 const Selected = ({ id, name, image, symbol, currentPrice }) => {
     const [dataChart, setDataChart] = useState([]);
     const [visible, setVisible] = useState(true);

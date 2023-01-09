@@ -2,7 +2,13 @@ import './Content.css';
 import CryptoCurrency from '../CryptoCurrency/CryptoCurrency';
 import Selected from '../Selected/Selected';
 import React, { useState, useEffect, useRef } from 'react';
-
+/**
+ * Component for checking if `selected` array has been changed to rerender selected items, catching data from CoinGecko API,
+ * and store all the important data in local storage, mapping the data to display correct the `Selected.js` components and
+ * `CryptoCurrency` components.
+ * @component
+ * @return {object} selected cryptocurrencies, wrappable tab and 20 first catched cryptocurrencies from CryptoCoin API
+ */
 const Content = () => {
     const [selected, setSelected] = useState(
         JSON.parse(localStorage.getItem('selected')) || []
@@ -11,7 +17,6 @@ const Content = () => {
         JSON.parse(localStorage.getItem('tab')) || false
     );
     const [data, setData] = useState([]);
-
     useEffect(() => {
         fetch(
             'https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=20&page=1&sparkline=false'

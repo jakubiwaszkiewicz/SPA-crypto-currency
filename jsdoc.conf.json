@@ -1,4 +1,9 @@
 {
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "plugins": ["plugins/markdown"],
   "source": {
     "include": ["src"],
     "includePattern": ".+\\.js(doc|x)?$",
