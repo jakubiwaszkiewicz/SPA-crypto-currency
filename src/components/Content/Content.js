@@ -3,9 +3,9 @@ import CryptoCurrency from '../CryptoCurrency/CryptoCurrency';
 import Selected from '../Selected/Selected';
 import React, { useState, useEffect, useRef } from 'react';
 /**
- * This component is used to check if the selected array has been modified, which triggers a re-render of the selected
+ * This component is used to check if the `selected` array has been modified, which triggers a re-render of the selected
  * items. It also retrieves data from the CoinGecko API and stores important information in local storage.
- * The data is then mapped and filtered to correctly display the Selected.js components and CryptoCurrency components.
+ * The `data` is then mapped and filtered to correctly display the `Selected.js` components and `CryptoCurrency.js` components.
  * The component displays the selected cryptocurrencies, as well as a tab and the top
  * 20 cryptocurrencies from the CryptoCoin API.
  * @component
