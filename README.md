@@ -1,18 +1,12 @@
-# Getting Started with Create React App
+# Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This website, built with React, enables you to choose from a list of cryptocurrencies and view market charts for the selected coins.
 
-## Available Scripts
+# Installation
 
-In the project directory, you can run:
+1. Type `npm install` in project directory in terminal to install all the necessary dependencies for the project.
+2. Enter `npm start` in terminal to compile the website
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 

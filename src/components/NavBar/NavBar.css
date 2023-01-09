@@ -12,57 +12,7 @@ nav {
 
 .navbar-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 100%;
     padding: 1rem;
-}
-.nav-menu {
-    display: flex;
-    padding: 0;
-}
-.nav-menu li {
-    padding: 0 1rem;
-}
-
-.nav-menu a {
-    font-size: 1rem;
-    font-weight: 700;
-}
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-@media screen and (max-width:500px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-menu {
-        position: absolute;
-        flex-flow: column nowrap;
-        justify-content: start;
-        top: 5rem;
-        right:-100%;
-        width: 50%;
-        height: calc(100vh);
-        z-index: 2;
-        background: var(--background);
-        border: 1px solid var(--background2);
-        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    }
-
-    .nav-menu.active {
-        right: 0;
-    }
-
-    .nav-menu li{
-        padding: 1rem 0 1rem 1rem;
-        width: calc(100% - 1rem);
-        border-bottom: 1px solid var(--background2);
-    }
-
-    .nav-menu li a {
-        font-size: 1.2rem;
-    }
 }

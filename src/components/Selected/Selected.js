@@ -1,10 +1,10 @@
 import "./Selected.css"
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Chart from './Chart/Chart'
 
-const Selected = ({id, name, image, symbol, currentPrice, selected, changeSelected}) => {
+const Selected = ({id, name, image, symbol, currentPrice}) => {
 
-    const [dataAPIChart, setDataAPIChart] = useState([])
+    const [dataChart, setDataChart] = useState([])
     const [visible, setVisible] = useState(true)
 
     const url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=pln&days=1`
@@ -16,8 +16,8 @@ const Selected = ({id, name, image, symbol, currentPrice, selected, changeSelect
     useEffect(() => {
         fetch(url)
             .then((response) => response.json())
-            .then((json) => setDataAPIChart(json));
-    },[])
+            .then((json) => setDataChart(json));
+    },[url])
 
     return (
         <section className="selected">
@@ -28,7 +28,7 @@ const Selected = ({id, name, image, symbol, currentPrice, selected, changeSelect
             <section className={visible ? "chartContainer" : "chartContainer active"}>
                 <Chart
                     visible = {visible}
-                    data = {dataAPIChart.prices}
+                    data = {dataChart.prices}
                     name = {name}
                 />
             </section>

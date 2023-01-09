@@ -1,8 +1,7 @@
-
-import "./Item.css"
+import "./CryptoCurrency.css"
 import React from 'react'
-import { useEffect } from 'react'
-const Item = ({id, selected, changeSelected, currentPrice, name, symbol, image}) => {
+
+const CryptoCurrency = ({id, selected, changeSelected, currentPrice, name, symbol, image}) => {
 
     const handleClick = () => {
         if (selected.includes(id)) {
@@ -18,13 +17,7 @@ const Item = ({id, selected, changeSelected, currentPrice, name, symbol, image})
         }}
     }
 
-    useEffect(() => {
-        const item = document.getElementById(`item-parent${id}`)
-        const initialValue = JSON.parse(localStorage.getItem(`isClicked${id}`))
-        if (initialValue) {
-            item.classList.add("active")
-        }
-    }, [])
+
 
     return (
         <div id={`item-parent${id}`} className={selected.includes(id) ? "Item active" : "Item"}>
@@ -35,4 +28,4 @@ const Item = ({id, selected, changeSelected, currentPrice, name, symbol, image})
         </div>
     );
 }
-export default Item;
+export default CryptoCurrency;

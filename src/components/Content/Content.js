@@ -1,9 +1,9 @@
 import "./Content.css";
-import Item from "../Item/Item";
+import CryptoCurrency from "../CryptoCurrency/CryptoCurrency";
 import Selected from "../Selected/Selected";
 import React, { useState, useEffect, useRef } from 'react';
-const Content = () => {
 
+const Content = () => {
     const [selected, setSelected] = useState(JSON.parse(localStorage.getItem("selected")) || []);
     const [tab, setTab] = useState(JSON.parse(localStorage.getItem("tab")) || false);
     const [data, setData] = useState([]);
@@ -14,18 +14,15 @@ const Content = () => {
             .then((json) => setData(json));
     },[])
 
-
     const changeSelected = (prevSelected) => {
         setSelected(prevSelected);
     }
 
     const didMountSelected = useRef(false);
-
     useEffect(() => {
         if (didMountSelected.current){
             localStorage.setItem("selected", JSON.stringify(selected))
-        }
-        else {
+        } else {
             didMountSelected.current = true
         }
     }, [selected])
@@ -39,7 +36,6 @@ const Content = () => {
             <div className={selected.length ? "content-selected active" : "content-selected" }>
                 <div className={tab ? "selected-currencies active" : "selected-currencies"}>
                     {data.filter((crypto) => selected.includes(crypto.id)).map((dataAPI) => {
-                        console.log('eeee');
                     return (
                         <Selected
                             key = {dataAPI.id}
@@ -52,7 +48,7 @@ const Content = () => {
                 <div className="selected-tab">
                     <p className="counter"></p>
                     <h5>Selected Currencies {selected.length}/5</h5>
-                    <div className={tab ? "dev-btn active" : "dev-btn"} onClick={() => setTab(prevState => !prevState)}>
+                    <div className={tab ? "wrap-btn active" : "wrap-btn"} onClick={() => setTab(prevState => !prevState)}>
                         <div className="btn-bars btn-bar1">
                         </div>
                         <div className="btn-bars btn-bar2">
@@ -62,7 +58,7 @@ const Content = () => {
             </div>
             <div className="content">
                 {data.map((dataAPI) => (
-                    <Item
+                    <CryptoCurrency
                         key = {dataAPI.id}
                         id = {dataAPI.id}
                         name = {dataAPI.name}

@@ -11,12 +11,9 @@
     max-width: 155px;
 }
 .chartContainer {
-    width: 50vw;
-    height: 50vh;
-    max-width: 800px;
-    max-height: 480px;
+    width: 60vw;
+    max-width: 1400px;
     min-width: 300px;
-    min-height: 150px;
     display: none;
 }
 .chartContainer.active {
