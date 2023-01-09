@@ -1,6 +1,11 @@
 import './CryptoCurrency.css';
 import React from 'react';
-
+/**
+ * Represents a book.
+ * @component
+ * @param {string} id - The title of the book.
+ * @param {function} selected- The author of the book.
+ */
 const CryptoCurrency = ({
     id,
     selected,
