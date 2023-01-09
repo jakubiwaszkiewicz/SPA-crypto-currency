@@ -4,6 +4,8 @@ import Chart from './Chart/Chart';
 /**
  *
  * @component
+ * Component for displaying a currency card and interactive button for displaying a market chart, catching
+ * an essential data for making chart.
  * @param {string} id- ID of the currency.
  * @param {array} selected- State, storing a selected items.
  * @param {string} currentPrice- Display a value of the currency
