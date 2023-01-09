@@ -7,7 +7,6 @@ This website, built with React, enables you to choose from a list of cryptocurre
 1. Type `npm install` in project directory in terminal to install all the necessary dependencies for the project.
 2. Enter `npm start` in terminal to compile the website
 
-
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\

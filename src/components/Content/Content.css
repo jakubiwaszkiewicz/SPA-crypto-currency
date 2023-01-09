@@ -27,8 +27,13 @@ main {
 .selected-tab {
     height: 3rem;
     /*background: var(--background2);*/
-    background: rgb(44,47,51);
-    background: linear-gradient(180deg, rgba(44,47,51,1) 0%, rgba(35,39,42,1) 71%, rgba(35,39,42,1) 100%);
+    background: rgb(44, 47, 51);
+    background: linear-gradient(
+        180deg,
+        rgba(44, 47, 51, 1) 0%,
+        rgba(35, 39, 42, 1) 71%,
+        rgba(35, 39, 42, 1) 100%
+    );
     display: flex;
     width: 100%;
     justify-content: center;
